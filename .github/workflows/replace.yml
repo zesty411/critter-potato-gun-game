@@ -1,0 +1,21 @@
+name: Replace index.html with v108 build
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace index.html with v108 build
+        run: |
+          git rm index.html
+          git mv critter-potato-gun-v108-OBFUSCATED.html index.html
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Replace index.html with v108 build"
+          git push
